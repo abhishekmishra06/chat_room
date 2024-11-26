@@ -33,8 +33,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static(__dirname)); // Serve static files
-
+ 
 // Store connected users
 const users = {};
 
@@ -62,8 +61,9 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+const port = process.env.PORT || 3000;  // Port for local or environment configuration
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
 
 
