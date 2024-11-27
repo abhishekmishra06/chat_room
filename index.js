@@ -29,15 +29,28 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const dotenv = require('dotenv');
+const cors = require('cors'); 
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+app.use(cors({
+    origin: 'http://127.0.0.1:5501', // Replace this with your frontend origin
+    methods: ['GET', 'POST'],
+    credentials: true,
+}));
+
+const io = new Server(server, {
+    cors: {
+        origin: 'http://127.0.0.1:5501', // Replace this with your frontend origin
+        methods: ['GET', 'POST'],
+    },
+});
+
 
  
 // Store connected users
 dotenv.config();
-
+ 
 const users = {};
 
 io.on('connection', (socket) => {
