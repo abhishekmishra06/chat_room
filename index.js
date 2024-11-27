@@ -28,6 +28,7 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
+const dotenv = require('dotenv');
 
 const app = express();
 const server = http.createServer(app);
@@ -35,6 +36,8 @@ const io = new Server(server);
 
  
 // Store connected users
+dotenv.config();
+
 const users = {};
 
 io.on('connection', (socket) => {
@@ -61,7 +64,7 @@ io.on('connection', (socket) => {
   });
 });
 
-const port = process.env.PORT || 3000;  // Port for local or environment configuration
+const port = process.env.PORT || 3001;  // Port for local or environment configuration
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
