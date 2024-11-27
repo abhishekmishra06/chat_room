@@ -35,7 +35,7 @@ const app = express();
 const server = http.createServer(app);
 app.use(cors({
     origin: ['http://127.0.0.1:5501',
-        'https://code-eta-one.vercel.app/'
+        'https://code-eta-one.vercel.app'
     ], // Replace this with your frontend origin
     methods: ['GET', 'POST'],
     credentials: true,
@@ -44,7 +44,7 @@ app.use(cors({
 const io = new Server(server, {
     cors: {
         origin:[ 'http://127.0.0.1:5501',
-            'https://code-eta-one.vercel.app/'
+            'https://code-eta-one.vercel.app'
         ], // Replace this with your frontend origin
         methods: ['GET', 'POST'],
     },
