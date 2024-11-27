@@ -34,7 +34,9 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 app.use(cors({
-    origin: 'http://127.0.0.1:5501', // Replace this with your frontend origin
+    origin: ['http://127.0.0.1:5501',
+        'https://code-eta-one.vercel.app/'
+    ], // Replace this with your frontend origin
     methods: ['GET', 'POST'],
     credentials: true,
 }));
